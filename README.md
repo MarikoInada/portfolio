@@ -48,4 +48,4 @@ MVPリリース
 
 ■ 機能の実装方針予定
 チャットbot機能　DialogflowかIBM Watson
-
+バックグラウンド処理　ActiveJob
