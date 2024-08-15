@@ -1,3 +1,5 @@
+Figma：https://www.figma.com/design/qo28nGCF7ErHGnrRWecQzh/%E7%84%A1%E9%A1%8C?node-id=0-1&t=wfDro9bMUcrhuAZw-0
+
 ■サービス概要
 メンタルケアができる
 自分の今の感情を選んでAIとのチャットや質問に答えていくことで自分の感情と向き合うことができる
