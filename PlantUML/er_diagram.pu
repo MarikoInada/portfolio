@@ -1,0 +1,76 @@
+@startuml erdiagram
+
+entity "Users" as users {
+  *id : integer [PK]
+  name : string
+  email : string
+  password_digest : string
+  profile_data : text
+  current_emotion_id : integer [FK]
+  created_at : datetime
+  updated_at : datetime
+}
+
+entity "Emotions" as emotions {
+  *id : integer [PK]
+  name : string
+  color_code : string
+  description : text
+}
+
+entity "ChatMessages" as chat_messages {
+  *id : integer [PK]
+  user_id : integer [FK]
+  content : text
+  created_at : datetime
+}
+
+entity "Questionnaires" as questionnaires {
+  *id : integer [PK]
+  emotion_id : integer [FK]
+  question_1 : text
+  question_2 : text
+  question_3 : text
+}
+
+entity "Answers" as answers {
+  *id : integer [PK]
+  user_id : integer [FK]
+  questionnaire_id : integer [FK]
+  answer_1 : text
+  answer_2 : text
+  answer_3 : text
+  created_at : datetime
+}
+
+entity "DiaryEntries" as diary_entries {
+  *id : integer [PK]
+  user_id : integer [FK]
+  emotion_id : integer [FK]
+  entry_date : date
+  content : text
+  created_at : datetime
+}
+
+entity "Profiles" as profiles {
+  *id : integer [PK]
+  user_id : integer [FK]
+  interest : text
+  strength : text
+  hobby : text
+  rank : integer
+  created_at : datetime
+  updated_at : datetime
+}
+
+users ||--o{ emotions : "current_emotion_id"
+users ||--o{ chat_messages : ""
+users ||--o{ answers : ""
+users ||--o{ diary_entries : ""
+users ||--|| profiles : ""
+
+emotions ||--o{ questionnaires : "emotion_id"
+questionnaires ||--o{ answers : "questionnaire_id"
+diary_entries }o--|| emotions : "emotion_id"
+
+@enduml
