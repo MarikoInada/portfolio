@@ -1,4 +1,3 @@
-![ER Diagram](/out/PlantUML/er_diagram/erdiagram.png)
 Figma：https://www.figma.com/design/qo28nGCF7ErHGnrRWecQzh/%E7%84%A1%E9%A1%8C?node-id=0-1&t=wfDro9bMUcrhuAZw-0
 
 ■サービス概要
@@ -11,7 +10,7 @@ Figma：https://www.figma.com/design/qo28nGCF7ErHGnrRWecQzh/%E7%84%A1%E9%A1%8C?n
 まずは自己分析して気持ちの整理をする手助けができるアプリがあれば悩む時間も少なくなるのではと思ったことが今回のアプリを作りたい理由です。
 
 ■ ユーザー層について
-女性や若年層など
+女性や若年層
 
 ■サービスの利用イメージ
 しんどいなと感じた時に寄り添えるようなイメージ
