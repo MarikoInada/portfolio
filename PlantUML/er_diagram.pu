@@ -5,10 +5,7 @@ entity "Users" as users {
   name : string
   email : string
   password_digest : string
-  profile_data : text
   current_emotion_id : integer [FK]
-  created_at : datetime
-  updated_at : datetime
 }
 
 entity "Emotions" as emotions {
@@ -22,25 +19,23 @@ entity "ChatMessages" as chat_messages {
   *id : integer [PK]
   user_id : integer [FK]
   content : text
-  created_at : datetime
 }
 
 entity "Questionnaires" as questionnaires {
   *id : integer [PK]
   emotion_id : integer [FK]
-  question_1 : text
-  question_2 : text
-  question_3 : text
+  what_happened : text
+  how_you_feel : text
+  what_to_do_next : text
 }
 
 entity "Answers" as answers {
   *id : integer [PK]
   user_id : integer [FK]
   questionnaire_id : integer [FK]
-  answer_1 : text
-  answer_2 : text
-  answer_3 : text
-  created_at : datetime
+  what_happened_answer : text
+  how_you_feel_answer : text
+  what_to_do_next_answer : text
 }
 
 entity "DiaryEntries" as diary_entries {
@@ -49,7 +44,6 @@ entity "DiaryEntries" as diary_entries {
   emotion_id : integer [FK]
   entry_date : date
   content : text
-  created_at : datetime
 }
 
 entity "Profiles" as profiles {
@@ -58,9 +52,6 @@ entity "Profiles" as profiles {
   interest : text
   strength : text
   hobby : text
-  rank : integer
-  created_at : datetime
-  updated_at : datetime
 }
 
 users ||--o{ emotions : "current_emotion_id"
