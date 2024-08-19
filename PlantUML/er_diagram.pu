@@ -33,9 +33,9 @@ entity "Answers" as answers {
   *id : integer [PK]
   user_id : integer [FK]
   questionnaire_id : integer [FK]
-  what_happened_answer : text
-  how_you_feel_answer : text
-  what_to_do_next_answer : text
+  what_happened : text
+  how_you_feel : text
+  what_to_do_next : text
 }
 
 entity "DiaryEntries" as diary_entries {
