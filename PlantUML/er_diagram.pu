@@ -1,0 +1,56 @@
+@startuml erdiagram
+
+entity "Users" as users {
+  *id : integer [PK]
+  name : string
+  email : string
+  password_digest : string
+  current_emotion_id : integer [FK]
+}
+
+entity "Emotions" as emotions {
+  *id : integer [PK]
+  name : string
+  color_code : string
+}
+
+entity "EmotionQuestions" as emotion_questions {
+  *id : integer [PK]
+  emotion_id : integer [FK]
+  content : text
+}
+
+entity "Answers" as answers {
+  *id : integer [PK]
+  user_id : integer [FK]
+  emotion_question_id : integer [FK]
+  answer : text
+}
+
+entity "DiaryEntries" as diary_entries {
+  *id : integer [PK]
+  user_id : integer [FK]
+  emotion_id : integer [FK]
+  entry_date : date
+  content : text
+}
+
+entity "Profiles" as profiles {
+  *id : integer [PK]
+  user_id : integer [FK]
+  interest : text
+  strength : text
+  hobby : text
+}
+
+users ||--o{ emotions : "current_emotion_id"
+users ||--o{ emotion_questions : ""
+users ||--o{ answers : ""
+users ||--o{ diary_entries : ""
+users ||--|| profiles : ""
+
+emotions ||--o{ emotion_questions : "emotion_id"
+emotions ||--o{ diary_entries : "emotion_id"
+emotion_questions ||--o{ answers : "emotion_question_id"
+
+@enduml
