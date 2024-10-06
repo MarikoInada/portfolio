@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
   before_action :set_task, only: %i[ show edit update destroy ]
+  before_action :set_user
 
   # GET /tasks or /tasks.json
   def index
@@ -67,4 +68,9 @@ class TasksController < ApplicationController
     def task_params
       params.require(:task).permit(:name)
     end
+
+    def set_user
+      @user = User.find(params[:user_id]) if params[:user_id].present?
+      @user ||= User.first
+    end  
 end

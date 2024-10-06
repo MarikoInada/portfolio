@@ -1,6 +1,17 @@
 Rails.application.routes.draw do
-  root "tasks#index"
+  resources :users do
+    resources :diary_entries # ユーザーに紐づく日記エントリ
+    resources :answers # ユーザーに紐づく回答
+    resource :profile, only: [:show, :edit, :update] # ユーザーのプロファイル（1対1の関係）
+    resources :chat_messages, only: [:index, :create]
+  end
+
+  resources :emotions do
+    resources :emotion_questions # 感情に紐づく質問
+  end
+
   resources :tasks
+  root "tasks#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

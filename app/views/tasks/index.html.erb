@@ -1,16 +1,25 @@
-<p style="color: green"><%= notice %></p>
+<main class="px-4 py-20 sm:px-6 lg:px-8">
+  <div class="mx-auto max-w-2xl sm:border-4 sm:border-black sm:p-4">
 
-<% content_for :title, "Tasks" %>
+    <div id="tasks">
+      <% @tasks.each do |task| %>
+        <%= render task %>
+        <p>
+          <%= link_to "Show this task", task %>
+        </p>
+      <% end %>
+    </div>
+    <%= link_to "New task", new_task_path %>
+  </div>
+</main>
 
-<h1>Tasks1</h1>
-
-<div id="tasks">
-  <% @tasks.each do |task| %>
-    <%= render task %>
-    <p>
-      <%= link_to "Show this task", task %>
-    </p>
-  <% end %>
+<div class="flex justify-center items-center space-x-2 py-6">
+  <%= link_to "Chat Messages", user_chat_messages_path(@user), class: "btn btn-active" %>
+  <button class="btn btn-active btn-neutral">Neutral</button>
+  <button class="btn btn-active btn-primary">Primary</button>
+  <button class="btn btn-active btn-secondary">Secondary</button>
+  <button class="btn btn-active btn-accent">Accent</button>
+  <button class="btn btn-active btn-ghost">Ghost</button>
+  <button class="btn btn-active btn-link">Link</button>
 </div>
 
-<%= link_to "New task", new_task_path %>
