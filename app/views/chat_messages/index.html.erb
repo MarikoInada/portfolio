@@ -1,0 +1,21 @@
+<h1 class="text-center text-2xl">Chat with Bot</h1>
+
+<div id="chat-box" class="h-96 overflow-y-scroll bg-gray-100 p-4 rounded-lg shadow-lg">
+  <% @chat_messages.each do |message| %>
+    <div class="chat <%= message.sender == 'user' ? 'chat-end' : 'chat-start' %>">
+      <div class="chat-bubble <%= message.sender == 'user' ? 'chat-bubble-primary' : 'chat-bubble-secondary' %>">
+        <%= message.content %>
+        <div class="text-xs text-gray-600 mt-1">
+          <%= message.created_at.strftime('%H:%M') %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<%= form_with(model: [@user, @new_message], local: true, class: "mt-4") do |form| %>
+  <div class="flex space-x-2">
+    <%= form.text_area :content, class: "input input-bordered w-full", rows: 1, placeholder: "Enter your message..." %>
+    <%= form.submit "Send", class: "btn btn-primary" %>
+  </div>
+<% end %>
