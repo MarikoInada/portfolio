@@ -14,7 +14,11 @@
 </main>
 
 <div class="flex justify-center items-center space-x-2 py-6">
+<% if @user %>
   <%= link_to "Chat Messages", user_chat_messages_path(@user), class: "btn btn-active" %>
+<% else %>
+  <p>No user found. Please log in.</p>
+<% end %>
   <button class="btn btn-active btn-neutral">Neutral</button>
   <button class="btn btn-active btn-primary">Primary</button>
   <button class="btn btn-active btn-secondary">Secondary</button>

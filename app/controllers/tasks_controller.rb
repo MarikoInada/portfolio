@@ -70,7 +70,6 @@ class TasksController < ApplicationController
     end
 
     def set_user
-      @user = User.find(params[:user_id]) if params[:user_id].present?
-      @user ||= User.first
+      @user = current_user
     end  
 end

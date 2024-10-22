@@ -74,11 +74,13 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_05_070753) do
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
-    t.string "email"
-    t.string "password_digest"
+    t.string "email", null: false
+    t.string "crypted_password"
+    t.string "salt"
     t.integer "current_emotion_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
   add_foreign_key "answers", "emotion_questions"
