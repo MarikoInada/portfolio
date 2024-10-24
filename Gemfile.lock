@@ -280,6 +280,10 @@ GEM
       bcrypt (~> 3.1)
       oauth (>= 0.6)
       oauth2 (~> 2.0)
+    sorcery-core (0.0.0)
+      bcrypt (~> 3.0)
+    sorcery-oauth (0.0.0)
+      sorcery-core (= 0.0.0)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -338,7 +342,8 @@ DEPENDENCIES
   rails (~> 7.2.1)
   rubocop-rails-omakase
   selenium-webdriver
-  sorcery
+  sorcery (~> 0.17)
+  sorcery-oauth
   sprockets-rails
   stimulus-rails
   turbo-rails
@@ -346,4 +351,4 @@ DEPENDENCIES
   web-console
 
 BUNDLED WITH
-   2.5.18
+   2.4.19
