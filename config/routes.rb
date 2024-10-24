@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get "static_page/top"
+  delete 'logout', to: 'sessions#destroy', as: 'logout'
   resources :users do
     resources :diary_entries # ユーザーに紐づく日記エントリ
     resources :answers # ユーザーに紐づく回答
@@ -9,9 +11,12 @@ Rails.application.routes.draw do
   resources :emotions do
     resources :emotion_questions # 感情に紐づく質問
   end
-
+  root 'static_pages#top'
+  post "oauth/callback" => "oauths#callback"
+  get "oauth/callback" => "oauths#callback" 
+  get "oauth/:provider" => "oauths#oauth", :as => :auth_at_provider
   resources :tasks
-  root "tasks#index"
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
