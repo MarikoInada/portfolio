@@ -28,5 +28,8 @@ module Myapp
       g.test_framework nil
       g.helper false
     end
+    config.autoloader = :zeitwerk
+    config.time_zone = 'Asia/Tokyo'
+    config.active_record.default_timezone = :local
   end
 end

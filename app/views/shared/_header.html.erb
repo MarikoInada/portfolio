@@ -4,7 +4,8 @@
   </div>
   <div class="flex flex-1 justify-end px-2">
     <div class="flex items-stretch">
-      <a class="btn btn-ghost rounded-btn">Button</a>
+      <%= home_link %>
+      <%= chat_link || link_to("Login", login_path, class: "btn btn-ghost rounded-btn") %>
       <div class="dropdown dropdown-end">
         <div tabindex="0" role="button" class="btn btn-ghost rounded-btn">Dropdown</div>
         <ul

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_10_22_140450) do
+ActiveRecord::Schema[7.2].define(version: 2024_10_26_091847) do
   create_table "answers", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "emotion_question_id", null: false
@@ -59,10 +59,20 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_22_140450) do
   end
 
   create_table "emotions", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
     t.string "name"
     t.string "color_code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_emotions_on_user_id"
+  end
+
+  create_table "hobbies", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_hobbies_on_user_id"
   end
 
   create_table "profiles", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -98,5 +108,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_22_140450) do
   add_foreign_key "diary_entries", "emotions"
   add_foreign_key "diary_entries", "users"
   add_foreign_key "emotion_questions", "emotions"
+  add_foreign_key "emotions", "users"
+  add_foreign_key "hobbies", "users"
   add_foreign_key "profiles", "users"
 end
