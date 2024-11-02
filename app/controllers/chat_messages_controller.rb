@@ -1,39 +1,56 @@
 class ChatMessagesController < ApplicationController
-    before_action :set_user
+  require_dependency 'open_a_i_service'
+  before_action :set_user
 
   def index
-    @chat_messages = @user.chat_messages.order(created_at: :asc)
+    @chat_messages = @user.chat_messages.includes(:user).order(created_at: :desc)
     @new_message = ChatMessage.new
   end
 
+  def start_new_chat
+    clear_messages
+    redirect_to user_chat_messages_path(@user)
+  end
+
   def create
-    # ユーザーのメッセージを保存
-    @chat_message = @user.chat_messages.build(chat_message_params.merge(sender: "user"))
-
-    if @chat_message.save
-      # ボットからの返信を作成（ここでは仮の応答）
-      bot_reply = generate_bot_reply(@chat_message.content)
-      @user.chat_messages.create(content: bot_reply, sender: "bot")
-
+    if save_user_message && save_bot_reply
       redirect_to user_chat_messages_path(@user)
     else
-      @chat_messages = @user.chat_messages.order(created_at: :asc)
+      @chat_messages = @user.chat_messages.order(created_at: :desc)
       render :index
     end
   end
 
   private
 
+  # ユーザーメッセージの保存
+  def save_user_message
+    @user.chat_messages.create(chat_message_params.merge(sender: "user"))
+  end
+
+  # ボットの応答を保存
+  def save_bot_reply
+    bot_reply = generate_bot_reply(@user.chat_messages.last.content)
+    @user.chat_messages.create(content: bot_reply, sender: "bot")
+  end
+
+  # OpenAIServiceでボットからの応答を生成
+  def generate_bot_reply(user_message)
+    OpenAIService.new(@user).generate_response(user_message)
+  end
+
+  # ユーザーの設定
   def set_user
     @user = User.find(params[:user_id])
   end
 
-  def chat_message_params
-    params.require(:chat_message).permit(:content)
+  # チャットメッセージのクリア
+  def clear_messages
+    @user.chat_messages.destroy_all
   end
 
-  def generate_bot_reply(user_message)
-    # ボットの応答を生成するロジック（仮実装）
-    "You said: #{user_message}"
+  # メッセージパラメータの許可
+  def chat_message_params
+    params.require(:chat_message).permit(:content)
   end
 end
