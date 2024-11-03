@@ -1,9 +1,8 @@
 module ApplicationHelper
     def chat_link
-        if current_user
+        Rails.logger.info "current_user in chat_link: #{current_user.inspect}"
+        if current_user.present?
           link_to "Chat", user_chat_messages_path(current_user), class: "btn btn-ghost rounded-btn"
-        else
-          link_to "Login", login_path, class: "btn btn-ghost rounded-btn" # ログインページのパスを設定
         end
     end
 
