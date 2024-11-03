@@ -4,8 +4,15 @@
   </div>
   <div class="flex flex-1 justify-end px-2">
     <div class="flex items-stretch">
-      <%= home_link %>
-      <%= chat_link || link_to("Login", login_path, class: "btn btn-ghost rounded-btn") %>
+        <%= home_link %>
+
+        <% if logged_in? %>
+            <%= chat_link %>
+            <%= link_to 'Logout', logout_path, data: { turbo_method: :delete }, class: 'btn btn-secondary' %>
+        <% else %>
+            <%= link_to 'Login with Google', auth_at_provider_path(provider: :google), class: 'btn btn-primary' %>
+        <% end %>
+
       <div class="dropdown dropdown-end">
         <div tabindex="0" role="button" class="btn btn-ghost rounded-btn">Dropdown</div>
         <ul
@@ -14,11 +21,6 @@
           <li><a>Item 1</a></li>
           <li><a>Item 2</a></li>
         </ul>
-        <% if !logged_in? %>
-            <%= link_to 'Login with Google', auth_at_provider_path(provider: :google), class: 'btn btn-primary' %>
-            <% else %>
-            <%= link_to 'Logout', logout_path, method: :delete, class: 'btn btn-secondary' %>
-        <% end %>
       </div>
     </div>
   </div>
