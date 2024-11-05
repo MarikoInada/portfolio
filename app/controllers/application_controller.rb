@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
   # 現在のユーザーを取得するメソッド
   def current_user
     Rails.logger.info "Session user_id: #{session[:user_id]}" # ログにセッションIDを出力
-    @current_user ||= User.find_by(session[:user_id]) if session[:user_id]
+    @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
     Rails.logger.info "Current user: #{@current_user.inspect}" # ログに現在のユーザーを出力
     @current_user
   end
