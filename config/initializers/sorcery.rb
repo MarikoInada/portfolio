@@ -158,8 +158,8 @@ Rails.application.config.sorcery.configure do |config|
   # config.auth0.callback_url = "https://0.0.0.0:3000/oauth/callback?provider=auth0"
   # config.auth0.site = "https://example.auth0.com"
   #
-  config.google.key = Rails.application.credentials.dig(:google, :google_client_id)
-  config.google.secret = Rails.application.credentials.dig(:google, :google_client_secret)
+  config.google.key = Rails.application.credentials.dig(:google, :google_client_id) || ENV['GOOGLE_CLIENT_ID']
+  config.google.secret = Rails.application.credentials.dig(:google, :google_client_secret) || ENV['GOOGLE_CLIENT_SECRET']
   config.google.callback_url = if Rails.env.production?
                                   "#{ENV['APP_URL']}/oauth/callback"
                                else
