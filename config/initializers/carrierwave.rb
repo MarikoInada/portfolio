@@ -1,12 +1,17 @@
+require 'carrierwave/storage/fog'
 CarrierWave.configure do |config|
-    config.fog_credentials = {
-      provider:              'AWS',                                    # 必須: 'AWS'と指定
-      aws_access_key_id:     Rails.application.credentials.dig(:aws, :access_key_id),      # credentials.yml.enc のアクセスキーID
-      aws_secret_access_key: Rails.application.credentials.dig(:aws, :secret_access_key),  # credentials.yml.enc のシークレットアクセスキー
-      region:                Rails.application.credentials.dig(:aws, :region),             # credentials.yml.enc のリージョン
-    }
-    config.fog_directory  = Rails.application.credentials.dig(:aws, :bucket)               # 必須: バケット名を指定
-    config.fog_public     = true                                         # 公開/非公開の設定 (例: true)
-    config.cache_storage = :fog                                          # キャッシュをS3に保存
+    if Rails.env.production? || Rails.env.staging?
+        config.storage = :fog
+        config.fog_credentials = {
+        provider:              'AWS',
+        aws_access_key_id:     Rails.application.credentials.dig(:aws, :access_key_id),
+        aws_secret_access_key: Rails.application.credentials.dig(:aws, :secret_access_key),
+        region:                Rails.application.credentials.dig(:aws, :region),
+        }
+        config.fog_directory  = Rails.application.credentials.dig(:aws, :bucket)
+        config.storage = :fog
+    else
+        config.storage = :file
+        config.enable_processing = Rails.env.development?
+    end
 end
-  
