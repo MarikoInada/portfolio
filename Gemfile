@@ -40,7 +40,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'sorcery', '~> 0.17', require: 'sorcery'
 gem 'sorcery-oauth'
 gem "ruby-openai"
-gem 'carrierwave', '~> 2.0'
+gem 'carrierwave', '>= 2.2.3'
 gem 'fog-aws'
 
 group :development, :test do
