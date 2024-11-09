@@ -1,11 +1,11 @@
-Rails.application.routes.draw do
-  get "static_page/top"
+Rails.application.routes.draw do  
   delete 'logout', to: 'sessions#destroy', as: 'logout'
   resources :users do
     resources :diary_entries # ユーザーに紐づく日記エントリ
     resources :answers # ユーザーに紐づく回答
-    resource :profile, only: [:show, :edit, :update] # ユーザーのプロファイル（1対1の関係）
+    resource :profile, only: [:show, :edit, :update]
     resources :chat_messages, only: [:index, :create]
+    resources :hobbies, only: [:index, :new, :edit, :create, :destroy]
   end
 
   resources :emotions do

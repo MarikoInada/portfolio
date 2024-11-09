@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   # Only allow modern browsers supporting webp images, web push, badges, import maps, CSS nesting, and CSS :has.
   allow_browser versions: :modern
   before_action :require_login
+  before_action :set_user, if: :logged_in?
   helper_method :logged_in?, :current_user
 
   private
@@ -10,6 +11,10 @@ class ApplicationController < ActionController::Base
     unless logged_in?
       redirect_to auth_at_provider_path(provider: :google), alert: "ログインが必要です"
     end
+  end
+
+  def set_user
+    @user = current_user
   end
 
   # ログイン状態を確認するメソッド

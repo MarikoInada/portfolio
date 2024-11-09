@@ -70,6 +70,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_26_091847) do
   create_table "hobbies", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "name"
+    t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_hobbies_on_user_id"

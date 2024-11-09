@@ -40,6 +40,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'sorcery', '~> 0.17', require: 'sorcery'
 gem 'sorcery-oauth'
 gem "ruby-openai"
+gem 'carrierwave', '~> 2.0'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
