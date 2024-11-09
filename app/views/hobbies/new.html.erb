@@ -1,0 +1,17 @@
+<div class="container centered-content text-center-content flex flex-col items-center justify-center gap-4">
+    <a class="text-lg font-bold">あなたの好きなこと</a>
+    <p>Find me in app/views/hobbies/new.html.erb</p>
+    <% if @hobby.errors.any? %>
+        <div class="alert alert-error w-full max-w-xs">
+            <% @hobby.errors.full_messages.each do |message| %>
+                <p><%= message %></p>
+            <% end %>
+        </div>
+    <% end %>
+
+  <%= form_with model: @hobby, url: user_hobbies_path(@user), class: "flex flex-col gap-4 items-center" do |form| %>
+    <%= form.file_field :image, class: "file-input file-input-bordered file-input-accent w-full max-w-xs" %>
+    <%= form.text_field :name, placeholder: "あなたの好きなこと", class: "input input-bordered input-primary w-full max-w-xs" %>
+    <%= form.submit "送信", class: "btn btn-primary w-full max-w-xs" %>
+  <% end %>
+</div>

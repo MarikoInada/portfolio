@@ -4,22 +4,13 @@
   </div>
   <div class="flex flex-1 justify-end px-2">
     <div class="flex items-stretch">
-        <%= home_link %>
-
-        <% if logged_in? %>
-            <%= chat_link %>
-            <%= link_to 'Logout', logout_path, data: { turbo_method: :delete }, class: 'btn btn-secondary' %>
-        <% else %>
-            <%= link_to 'Login with Google', auth_at_provider_path(provider: :google), class: 'btn btn-primary' %>
-        <% end %>
+        <%= header_links %>
 
       <div class="dropdown dropdown-end">
         <div tabindex="0" role="button" class="btn btn-ghost rounded-btn">Dropdown</div>
-        <ul
-          tabindex="0"
-          class="menu dropdown-content bg-base-100 rounded-box z-[1] mt-4 w-52 p-2 shadow">
-          <li><a>Item 1</a></li>
-          <li><a>Item 2</a></li>
+        <ul tabindex="0" class="menu dropdown-content bg-base-100 rounded-box z-[1] mt-4 w-52 p-2 shadow">
+          <%= my_prof_link %>
+          <%= my_hobbies_link %>
         </ul>
       </div>
     </div>

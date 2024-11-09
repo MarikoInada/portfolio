@@ -1,0 +1,5 @@
+<div class="hobby-item mb-4 flex flex-col items-center">
+  <%= hobby_display_content(hobby) %>
+  <%= link_to '♡編集', edit_user_hobby_path(user, hobby), class: 'btn btn-primary mt-2' %>
+  <%= render partial: 'shared/delete_button', locals: { user: user, hobby: hobby } %>
+</div>
