@@ -384,7 +384,7 @@ DEPENDENCIES
   bootsnap
   brakeman
   capybara
-  carrierwave (>= 2.2.1)
+  carrierwave (= 3.0.7)
   cssbundling-rails
   debug
   fog-aws (>= 3.6, < 4.0)
