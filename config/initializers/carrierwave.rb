@@ -9,6 +9,7 @@ CarrierWave.configure do |config|
         }
         config.fog_directory  = Rails.application.credentials.dig(:aws, :bucket)
         config.storage = :fog
+        config.fog_public     = false
         config.fog_attributes = { "x-amz-acl" => nil }
     else
         config.storage = :file
