@@ -11,7 +11,8 @@ CarrierWave.configure do |config|
         config.storage = :fog
         config.fog_public     = false
         config.fog_attributes = { "x-amz-acl" => nil }
-        config.fog_authenticated_url_expiration = 31536000
+        config.fog_authenticated_url_expiration = 604000
+        Fog::Logger[:debug] = $stdout
     else
         config.storage = :file
         config.enable_processing = Rails.env.development?
