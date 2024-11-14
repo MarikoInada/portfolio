@@ -1,3 +1,4 @@
+@import "swiper/swiper-bundle.min.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,4 +9,115 @@
 
 .text-center-content {
     @apply text-center text-gray-700;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 20;
+}
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 20;
+}
+.swiper-wrapper {
+    display: flex;
+}
+
+.swiper-slide {
+    flex: 0 0 auto;
+    width: 100%;
+}
+.swiper-container {
+    overflow: visible;
+    position: relative;
+    z-index: 0;
+}
+.swiper-button-next,
+.swiper-button-prev {
+  color: #666; /* ボタンの色（必要に応じて変更） */
+  width: 30px;
+  height: 30px;
+  z-index: 100; /* 他の要素の上に表示 */
+  position: absolute; /* 親コンテナ内で絶対位置に配置 */
+  top: 50%; /* 垂直中央に配置 */
+}
+
+.swiper-button-next {
+    right: 10px; /* 右側の位置調整 */
+}
+  
+.swiper-button-prev {
+    left: 10px; /* 左側の位置調整 */
+}
+  
+  
+  /* Swiperのページネーション */
+.swiper-pagination {
+    position: absolute;
+    bottom: 10px; /* ページネーションの位置調整 */
+    width: 100%;
+    text-align: center;
+    z-index: 20; /* 他の要素より前面に表示 */
+}
+
+.image-overlay {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.overlay-image {
+    width: 100%; /* 画像を親要素にフィットさせる */
+    height: auto;
+    display: block
+}  
+
+.overlay-text {
+    position: absolute;
+    top: 30%; /* 画像の中央に配置 */
+    left: 30%;
+    transform: translate(-50%, -50%); /* 中央揃え */
+    color:  #555;/* テキスト色（必要に応じて変更） */
+    font-size: 20px; /* テキストサイズ */
+    font-weight: bold;
+    z-index: 10; /* テキストが画像の上に表示されるように設定 */
+    font-family: 'Daisy UI', sans-serif; /* DaisyUIのデフォルトフォント */
+    border-radius: 8px;
+    padding-left: 100px;
+    line-height: 3
+}
+
+.overlay-text2 {
+    position: absolute;
+    top: 50%; /* 画像の中央に配置 */
+    left: 40%;
+    transform: translate(-50%, -50%); /* 中央揃え */
+    color:  #555;/* テキスト色（必要に応じて変更） */
+    font-size: 20px; /* テキストサイズ */
+    font-weight: bold;
+    z-index: 10; /* テキストが画像の上に表示されるように設定 */
+    font-family: 'Daisy UI', sans-serif; /* DaisyUIのデフォルトフォント */
+    border-radius: 8px;
+    padding-left: 100px;
+    line-height: 3
+}
+.overlay-text3 {
+    position: absolute;
+    top: 50%; /* 画像の中央に配置 */
+    left: 30%;
+    transform: translate(-50%, -50%); /* 中央揃え */
+    color:  #555;/* テキスト色（必要に応じて変更） */
+    font-size: 20px; /* テキストサイズ */
+    font-weight: bold;
+    z-index: 10; /* テキストが画像の上に表示されるように設定 */
+    font-family: 'Daisy UI', sans-serif; /* DaisyUIのデフォルトフォント */
+    border-radius: 8px;
+    padding-left: 100px;
+    line-height: 3
 }

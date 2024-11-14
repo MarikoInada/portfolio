@@ -1,2 +1,58 @@
 <h1>StaticPage#top</h1>
 <p>Find me in app/views/static_page/top.html.erb</p>
+
+<div class="swiper-container" data-controller="swiper">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide">
+      <div class="card bg-base-100 w-full shadow-xl">        
+        <figure class="image-overlay">
+          <%= image_tag "top-flower.png", alt: "Flower" %>
+          <div class="overlay-text">
+            このアプリはあなたのメンタルケアをサポートします<br>
+            今の気分や好きなこと<br>
+            なんでも気軽に話してください
+        </div>
+        </figure>
+      </div>
+    </div>
+    <!-- 他のスライドを追加 -->
+    <div class="swiper-slide">
+      <div class="card bg-base-100 w-full shadow-xl">
+        <figure class="image-overlay">
+          <%= image_tag "top-flower2.png", alt: "Flower" %>
+          <div class="overlay-text2">
+            mayfuruに今の気持ちを呟いてみましょう<br>
+            きっとあなたに寄り添って答えてくれます
+          </div>
+        </figure>
+      </div>
+    </div>
+    <div class="swiper-slide">
+      <div class="card bg-base-100 w-full shadow-xl">
+        <figure class="image-overlay">
+          <%= image_tag "top-flower3.png", alt: "Flower" %>
+          <div class="overlay-text">
+            mayfuruに今の気持ちを呟いてみましょう<br>
+            きっとあなたに寄り添って答えてくれます
+          </div>
+        </figure>
+      </div>
+    </div>
+        <div class="swiper-slide">
+      <div class="card bg-base-100 w-full shadow-xl">
+        <figure class="image-overlay">
+          <%= image_tag "top-flower4.png", alt: "Flower" %>
+          <div class="overlay-text3">
+            MYページに好きなことや趣味を<br>
+            集めてみましょう<br>
+            リフレッシュのお役に立てます<br>
+          </div>
+        </figure>
+      </div>
+    </div>
+  </div>
+  <!-- Swiperのナビゲーションボタン -->
+  <div class="swiper-button-next"></div>
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-pagination"></div>
+</div>
