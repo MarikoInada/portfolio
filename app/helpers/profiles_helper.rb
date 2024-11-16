@@ -1,11 +1,17 @@
 module ProfilesHelper
-  def hobby_display_content(hobby)
-    if hobby.image.present?
-      image_tag(hobby.image.url, class: "mask mask-heart h-32 w-32")
-    elsif hobby.name.present?
-      content_tag(:div, hobby.name, class: "mask mask-heart bg-primary flex items-center justify-center text-white font-bold h-32 w-32")
+  def profile_content(profile, user)
+    if profile.strength.present? || profile.interest.present? || profile.hobby.present?
+      render 'shared/profile_full', profile: profile, user: user
     else
-      nil
+      content_tag(:p, 'プロフィールがまだ設定されていません。', class: 'text-gray-500')
+    end
+  end
+
+  def display_profile_image(user)
+    if user.image.present?
+      image_tag user.image.url, alt: "#{user.name}のプロフィール画像", class: "rounded-full w-32 h-32 mx-auto"
+    else
+      content_tag :div, "画像未設定", class: "bg-gray-200 rounded-full w-32 h-32 mx-auto flex items-center justify-center"
     end
   end
 end

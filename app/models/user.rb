@@ -13,4 +13,5 @@ class User < ApplicationRecord
   has_many :hobbies, dependent: :destroy
 
   belongs_to :current_emotion, class_name: 'Emotion', optional: true
+  mount_uploader :image, ImageUploader
 end

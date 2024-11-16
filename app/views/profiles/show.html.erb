@@ -1,7 +1,6 @@
 <div class="container centered-content text-center-content">
-  <h1 class="text-2xl font-bold mb-4"><%= current_user.name %>さん's♡</h1>
-    <% if @hobby.present? %>
-        <%= hobby_display_content(@hobby) %>
-    <% end %>
+  <h1 class="text-2xl font-bold mb-4"><%= @user.name %>さん'sPAGE</h1>
+    <%= display_profile_image(@user) %>
+    <%= profile_content(@profile, @user) %>
     <%= link_to 'プロフィールを編集', edit_user_profile_path, class: 'btn btn-primary' %>
 </div>

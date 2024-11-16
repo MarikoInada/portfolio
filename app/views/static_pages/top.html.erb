@@ -10,7 +10,10 @@
           <div class="overlay-text">
             このアプリはあなたのメンタルケアをサポートします<br>
             今の気分や好きなこと<br>
-            なんでも気軽に話してください
+            なんでも気軽に話してください<br>
+            <% unless logged_in? %>
+              ログインするとお使いいただけます
+            <% end %>
         </div>
         </figure>
       </div>
@@ -22,7 +25,8 @@
           <%= image_tag "top-flower2.png", alt: "Flower" %>
           <div class="overlay-text2">
             mayfuruに今の気持ちを呟いてみましょう<br>
-            きっとあなたに寄り添って答えてくれます
+            きっとあなたに寄り添って答えてくれます<br>
+            chatに行ってみてください
           </div>
         </figure>
       </div>

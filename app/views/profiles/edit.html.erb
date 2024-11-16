@@ -1,5 +1,39 @@
 <div class="container centered-content text-center-content">
     <h1>Profiles#edit</h1>
     <p>Find me in app/views/profiles/edit.html.erb</p>
-    <input type="file" class="file-input file-input-bordered file-input-accent w-full max-w-xs" />
+    <%= form_with(model: [@user, @profile], url: user_profile_path(@user), method: :patch, local: true, class: "flex flex-col items-center mt-8") do |form| %>
+        <%= form.file_field :image, class: "file-input file-input-bordered file-input-accent w-full max-w-xs" %>
+        <!-- Name -->
+        <label class="input input-bordered flex items-center justify-between gap-4 w-full max-w-xs">
+            <span class="whitespace-nowrap">Name</span>
+            <%= form.text_field :name, class: "grow", placeholder: @profile.user.name || "Daisy" %>
+        </label>
+        <!-- Email -->
+        <label class="input input-bordered flex items-center justify-between gap-4 w-full max-w-xs">
+            <span class="whitespace-nowrap">Email</span>
+            <%= form.text_field :email, class: "grow", placeholder: @profile.user.email || "daisy@site.com" %>
+        </label>
+        <!-- Divider -->
+        <div class="divider w-full max-w-xs my-4"></div>
+        <!-- Strength -->
+        <div class="w-full max-w-sm">
+            <label class="input input-bordered flex items-center justify-between gap-4">
+            <span class="whitespace-nowrap">あなたの強み</span>
+            <%= form.text_field :strength, class: "grow", placeholder: @profile.strength || "Your strengths" %>
+            </label>
+        </div>
+
+        <!-- Interest -->
+        <div class="w-full max-w-sm">
+            <label class="input input-bordered flex items-center justify-between gap-4">
+            <span class="whitespace-nowrap">やってみたいこと</span>
+            <%= form.text_field :interest, class: "grow", placeholder: @profile.interest || "Your interests" %>
+            </label>
+        </div>
+
+        <!-- Submit -->
+        <div class="flex justify-center">
+            <%= form.submit "Update Profile", class: "btn btn-primary mt-4" %>
+        </div>
+    <% end %>
 </div>

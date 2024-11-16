@@ -1,18 +1,19 @@
 <div class="navbar bg-base-300 rounded-box">
   <div class="flex-1 px-2 lg:flex-none">
-    <a class="text-lg font-bold">daisyUI</a>
+    <a class="text-lg font-bold">mayfuru</a>
   </div>
   <div class="flex flex-1 justify-end px-2">
     <div class="flex items-stretch">
         <%= header_links %>
-
-      <div class="dropdown dropdown-end">
-        <div tabindex="0" role="button" class="btn btn-ghost rounded-btn">Dropdown</div>
-        <ul tabindex="0" class="menu dropdown-content bg-base-100 rounded-box z-[1] mt-4 w-52 p-2 shadow">
-          <%= my_prof_link %>
-          <%= my_hobbies_link %>
-        </ul>
-      </div>
+        <% if logged_in? %>
+          <div class="dropdown dropdown-end">
+            <div tabindex="0" role="button" class="btn btn-ghost rounded-btn">MyPage</div>
+            <ul tabindex="0" class="menu dropdown-content bg-base-100 rounded-box z-[1] mt-4 w-52 p-2 shadow">
+              <%= my_prof_link %>
+              <%= my_hobbies_link %>
+            </ul>
+          </div>
+        <% end %>
     </div>
   </div>
 </div>

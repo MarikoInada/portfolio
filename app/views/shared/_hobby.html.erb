@@ -1,5 +1,20 @@
-<div class="hobby-item mb-4 flex flex-col items-center">
-  <%= hobby_display_content(hobby) %>
-  <%= link_to '♡編集', edit_user_hobby_path(user, hobby), class: 'btn btn-primary mt-2' %>
-  <%= render partial: 'shared/delete_button', locals: { user: user, hobby: hobby } %>
+<div id="hobby_<%= hobby.id %>" class="hobby-item mb-4 flex flex-col items-center relative">
+  <!-- 画像クリックでモーダルを開く -->
+  <a href="#" onclick="document.getElementById('action-modal-<%= hobby.id %>').showModal(); return false;">
+    <%= hobby_display_content(hobby) %>
+  </a>
+
+  <!-- モーダル -->
+  <dialog id="action-modal-<%= hobby.id %>" class="modal fixed inset-0 flex items-center justify-center bg-black/50 hidden">
+    <div class="modal-content bg-white p-4 rounded shadow-lg text-center">
+      <p class="text-lg font-bold">操作を選択してください</p>
+      <div class="flex justify-around mt-4">
+        <!-- 編集リンク -->
+        <%= link_to '編集', edit_user_hobby_path(user, hobby), class: "text-primary underline" %>
+        <!-- 削除リンク -->
+        <%= link_to '削除', user_hobby_path(user, hobby), method: :delete, data: { turbo_stream: true, confirm: "本当に削除しますか？" }, class: "text-error underline" %>
+      </div>
+      <a href="#" class="text-gray-500 underline mt-4 block" onclick="document.getElementById('action-modal-<%= hobby.id %>').close(); return false;">閉じる</a>
+    </div>
+  </dialog>
 </div>
