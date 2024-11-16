@@ -1,6 +1,9 @@
 <div class="container centered-content text-center-content">
     <h1>Profiles#edit</h1>
     <p>Find me in app/views/profiles/edit.html.erb</p>
+    <div class="text-center mb-4">
+        <%= display_profile_image(@user) %>
+    </div>
     <%= form_with(model: [@user, @profile], url: user_profile_path(@user), method: :patch, local: true, class: "flex flex-col items-center mt-8") do |form| %>
         <%= form.file_field :image, class: "file-input file-input-bordered file-input-accent w-full max-w-xs" %>
         <!-- Name -->
