@@ -3,11 +3,7 @@ class ProfilesController < ApplicationController
   before_action :set_user_profile, only: [:edit, :update]
 
   def show
-    @profile = @user.profile
-    unless @profile
-      flash[:alert] = 'プロフィール情報がありません。'
-      redirect_to root_path and return
-    end
+    @profile = @user.profile || @user.build_profile # プロフィールがない場合は新規作成
     @hobbies = @user.hobbies
   end
 
