@@ -1,15 +1,18 @@
 class ProfilesController < ApplicationController
   before_action :set_user
-  before_action :set_user_profile, only: [:update]
+  before_action :set_user_profile, only: [:edit, :update]
 
   def show
-    @user = @user = User.find(params[:user_id])
+    @profile = @user.profile
+    unless @profile
+      flash[:alert] = 'プロフィール情報がありません。'
+      redirect_to root_path and return
+    end
     @hobbies = @user.hobbies
-    @profile = @user.profile # プロフィール情報も表示可能に
   end
 
   def edit
-    @profile = current_user.profile || current_user.build_profile
+    @profile = @user.profile || current_user.build_profile
   end
 
   def update
