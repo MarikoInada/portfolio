@@ -3,21 +3,18 @@
 @tailwind components;
 @tailwind utilities;
 
-.centered-content {
-    @apply container mx-auto my-10 p-8 bg-base-100 rounded-lg shadow-md;
+.chat-container {
+    @apply flex flex-col items-center justify-center mx-auto mt-10 w-full max-w-xl bg-base-100 p-6 rounded-lg shadow-lg;
 }
 
-.text-center-content {
-    @apply text-center text-gray-700;
+.chat-box {
+    @apply w-full max-w-3xl h-96 overflow-y-scroll bg-gray-100 p-4 rounded-lg shadow-lg;
 }
 
-.navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 20;
+.form-container {
+    @apply max-w-xl mt-6;
 }
+
 footer {
     position: fixed;
     bottom: 0;
@@ -121,3 +118,20 @@ footer {
     padding-left: 100px;
     line-height: 3
 }
+
+.modal {
+    display: none; /* 初期状態で非表示 */
+  }
+  
+  .modal[open] {
+    display: flex; /* 表示時にフレックスボックスで中央配置 */
+  }
+  
+  .modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000; /* 他の要素の上に表示 */
+  }
+  

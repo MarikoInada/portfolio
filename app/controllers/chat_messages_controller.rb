@@ -3,7 +3,10 @@ class ChatMessagesController < ApplicationController
   before_action :set_user
 
   def index
-    @chat_messages = @user.chat_messages.includes(:user).order(created_at: :desc)
+    @chat_messages = @user.chat_messages
+                          .includes(:user)
+                          .where('created_at >= ?', 10.minutes.ago)
+                          .order(created_at: :desc)
     @new_message = ChatMessage.new
   end
 

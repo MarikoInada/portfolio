@@ -32,11 +32,11 @@ module ApplicationHelper
       
     def my_prof_link
         return unless logged_in?
-        link_to "Prof", user_profile_path(current_user), class: "dropdown-item"
+        link_to "Prof", user_profile_path(current_user), class: "dropdown-item text-sm font-bold"
     end
 
     def my_hobbies_link
         return unless logged_in?
-        link_to "hobbies", user_hobbies_path(current_user), class: "dropdown-item"
+        link_to "I ♡..", user_hobbies_path(current_user), class: "dropdown-item text-sm font-bold"
     end
 end
