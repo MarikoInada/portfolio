@@ -3,7 +3,6 @@
 // ./bin/rails generate stimulus controllerName
 import { application } from "./application";
 import SwiperController from "./swiper_controller";
-
 application.register("swiper", SwiperController);
 
 console.log('テスト3');
