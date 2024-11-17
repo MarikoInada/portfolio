@@ -15,8 +15,8 @@
     @apply max-w-xl mt-6 flex flex-col justify-center items-center min-h-screen mx-auto;
 }
 
-.container.centered-content {
-    @apply flex flex-col justify-center items-center min-h-screen text-center;
+.custom-container {
+    @apply flex flex-col items-center justify-center gap-4 min-h-screen text-center;
 }
 
 footer {
