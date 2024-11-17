@@ -16,12 +16,7 @@
 }
 
 .container.centered-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh; /* 画面全体の高さ */
-    text-align: center; /* テキストを中央寄せ */
+    @apply flex flex-col justify-center items-center min-h-screen text-center;
 }
 
 footer {
