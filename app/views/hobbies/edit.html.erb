@@ -1,0 +1,32 @@
+<div class="custom-container">
+    <!-- 一番上に表示 -->
+
+    <!-- タイトル -->
+    <h1 class="text-2xl font-bold mb-4">You're Favorite</h1>
+    <div class="flex justify-center items-center mb-4">
+        <%= hobby_display_content(@hobby) %>
+    </div>
+
+    <!-- エラーメッセージ -->
+    <% if @hobby.errors.any? %>
+        <div class="alert alert-error w-full max-w-xs">
+            <% @hobby.errors.full_messages.each do |message| %>
+                <p><%= message %></p>
+            <% end %>
+        </div>
+    <% end %>
+
+    <!-- フォーム -->
+    <%= form_with model: @hobby, url: user_hobby_path(@user, @hobby), method: :patch, class: "flex flex-col gap-4 items-center" do |form| %>
+        <!-- イメージ -->
+        <%= form.file_field :image, class: "file-input file-input-bordered file-input-accent w-full max-w-xs" %>
+
+        <!-- 名前 -->
+        <%= form.text_field :name, 
+            placeholder: @hobby.name || "あなたの好きなこと", 
+            class: "input input-bordered input-primary w-full max-w-xs" %>
+
+        <!-- 送信ボタン -->
+        <%= form.submit "更新", class: "btn btn-primary w-full max-w-xs" %>
+    <% end %>
+</div>
