@@ -1,5 +1,6 @@
 class HobbiesController < ApplicationController
   before_action :set_user
+  before_action :set_hobby, only: [:edit, :update, :destroy]
 
   def new
     @hobby = Hobby.new
@@ -15,15 +16,21 @@ class HobbiesController < ApplicationController
   end
 
   def index
-    @user = User.find(params[:user_id])
     @hobbies = @user.hobbies
   end
 
   def edit
   end
 
+  def update
+    if @hobby.update(hobby_params)
+      redirect_to user_hobbies_path(@user), notice: "趣味が更新されました"
+    else
+      render :edit, alert: "趣味の更新に失敗しました"
+    end
+  end
+
   def destroy
-    @hobby = @user.hobbies.find(params[:id])
     @hobby.destroy
 
     respond_to do |format|
@@ -40,5 +47,9 @@ class HobbiesController < ApplicationController
 
   def set_user
     @user = current_user
+  end
+
+  def set_hobby
+    @hobby = @user.hobbies.find(params[:id])
   end
 end
